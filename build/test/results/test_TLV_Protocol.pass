@@ -1,0 +1,22 @@
+---
+:source:
+  :path: test
+  :file: test_TLV_Protocol.c
+:successes:
+- :test: test_requestProgrammingMode_should_send_the_programming_mode_message_through_rs232
+  :line: 17
+  :message: ''
+- :test: test_requestProgrammingMode_should_return_0_if_receiveByte_is_NACK
+  :line: 33
+  :message: ''
+- :test: test_requestProgrammingMode_should_return_1_if_receiveByte_is_ACK
+  :line: 50
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 3
+  :passed: 3
+  :failed: 0
+  :ignored: 0
+:stdout: []
