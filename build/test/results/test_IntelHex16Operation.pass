@@ -7,55 +7,55 @@
   :line: 20
   :message: ''
 - :test: test_readLine_should_read__second_string_of_line
-  :line: 56
+  :line: 50
   :message: ''
 - :test: test_createIntelHex16Data_should_throw_an_exception_if_first_character_is_not_colon
-  :line: 92
+  :line: 81
   :message: ''
 - :test: test_getByteFromIntelHex16Data_given_index_1_should_get_the_first_byte
-  :line: 112
+  :line: 101
   :message: ''
 - :test: test_getByteFromIntelHex16Data_given_index_4_should_get_the_forth_byte
-  :line: 130
+  :line: 119
   :message: ''
 - :test: test_getByteFromIntelHex16Data_given_index_0_should_return_minus_1
-  :line: 148
+  :line: 137
   :message: ''
 - :test: test_getByteFromIntelHex16Data_given_index_exceed_the_no_of_byte_of_the_line_should_return_minus_1
-  :line: 166
+  :line: 155
   :message: ''
 - :test: test_getLengthFromIntelHex16Data_should_get_length_from_INTEL_HEX_FILE
-  :line: 186
+  :line: 175
   :message: ''
 - :test: test_getTypeFromIntelHex16Data_should_get_type_from_INTEL_HEX_FILE
-  :line: 204
+  :line: 193
   :message: ''
 - :test: test_getAddressFromIntelHex16Data_should_get_address_from_INTEL_HEX_FILE
-  :line: 222
+  :line: 211
   :message: ''
 - :test: test_verifyCheckSumOfIntelHex16Data_should_return_1_if_no_error
-  :line: 240
+  :line: 229
   :message: ''
 - :test: test_verifyCheckSumOfIntelHex16Data_should_return_0_if_got_error
-  :line: 258
+  :line: 247
   :message: ''
 - :test: test_getLSByteAndShiftRight_should_shift_the_address_to_the_right
-  :line: 276
+  :line: 265
   :message: ''
 - :test: test_createProgramMessage_should_create_message_for_the_program
-  :line: 300
+  :line: 289
   :message: ''
 - :test: test_createProgramMessage_should_raise_an_exception_if_wrong_checksum
-  :line: 343
+  :line: 328
   :message: ''
 - :test: test_createProgrammingMode_should_create_programming_mode_message
-  :line: 381
+  :line: 366
   :message: ''
 - :test: test_createStartRunningMessage_should_create_start_running_message
-  :line: 390
+  :line: 375
   :message: ''
 - :test: test_sendTLV_should_send_TLV_byte_by_byte
-  :line: 399
+  :line: 384
   :message: ''
 :failures: []
 :ignores: []

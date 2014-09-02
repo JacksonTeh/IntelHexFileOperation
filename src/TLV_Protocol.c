@@ -6,6 +6,17 @@
 #define COM_PORT 2
 #define IntelHexFile "LEDBlink.hex"
 
+int openHexFile(FILE *hexFile)
+{
+	if(hexFile == NULL)
+	{
+		printf("Error: cannot open the file %s\n", IntelHexFile);
+		return 0;	// Terminate the program immediately
+	}
+	
+	return 1;
+}
+
 int requestProgrammingMode(TLV *tlv, char receiveByte)
 {
 	// do
@@ -22,6 +33,13 @@ int requestProgrammingMode(TLV *tlv, char receiveByte)
 	return 1;
 }
 
+int sendDataCode(FILE *hexFile, TLV *tlv, char *buffer)
+{
+	readLine(hexFile, buffer);
+	
+	data = createIntelHex16Data(buffer);
+}
+
 // int tlvProtocol()
 // {
 	// int address, dataHigh, dataLow, i = 0;
@@ -29,14 +47,6 @@ int requestProgrammingMode(TLV *tlv, char receiveByte)
 	// FILE *hexFile;
 	// IntelHex16Data *data;
 	// TLV *tlvMessage;
-
-	// hexFile = fopen(IntelHexFile, "r");
-
-	// if(hexFile == NULL)
-	// {
-		// printf("Error: cannot open the file %s\n", IntelHexFile);
-		// return 0;	// Terminate the program immediately
-	// }
 
 	// RS232_OpenComport(COM_PORT, 9600);
 
@@ -55,6 +65,7 @@ int requestProgrammingMode(TLV *tlv, char receiveByte)
 	// RS232_PollComport(COM_PORT, &receiveByte, 1);
 
 	// printf("ACK: %d\n", receiveByte); */
+
  	// do{
 		// readLine(hexFile, buffer);
 		// data = createIntelHex16Data(buffer);

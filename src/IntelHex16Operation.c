@@ -215,27 +215,19 @@ TLV *createProgramMessage(IntelHex16Data *data, int addressHigh)
 
 	TLV *tlvMessage = malloc(sizeof(TLV) + sizeof(char) * (addressAndCS + length));
 	sscanf(&(data->line[1]), "%2x", &length);
-	// tlvMessage->value = malloc(sizeof(char) * (addressAndCS + i));
 	tlvMessage->type = PROGRAM_MSG;
 	tlvMessage->length = length + addressAndCS;
-
-	//printf("tlvMessage: %p\n", tlvMessage);
-	//printf("length: %d\n", tlvMessage->length);
-	//printf("type: %d\n", tlvMessage->type);
 
 	if(!verifyCheckSumOfIntelHex16Data(data))
 		Throw(ERR_WRONG_CHECKSUM);
 
 	addressLow = getAddressFromIntelHex16Data(data);
-	//printf("addressLow: %d\n", addressLow);
 	address32bit = (addressHigh << 16) | addressLow;
-	//printf("address32bit: %d\n", address32bit);
 
 	for(j = 0; j < 4; j++)
 	{
 		tlvMessage->value[j] = getLSByteAndShiftRight(&address32bit);
 	}
-	//printf("value: %d\n", tlvMessage->value[2]);
 
 	for(j = 4; j < (length + 5); j++)
 	{
@@ -247,6 +239,12 @@ TLV *createProgramMessage(IntelHex16Data *data, int addressHigh)
 	return tlvMessage;
 }
 
+/*
+ * To create a TLV Start Running Message for PIC18 module to run the target
+ *
+ * Return
+ *		tlvMessage		is a pointer to TLV object
+ */
 TLV *createStartRunningMessage()
 {
 	TLV *tlvMessage = malloc(sizeof(TLV));
@@ -263,6 +261,12 @@ TLV *createInquireTargetAvailability()
 	return tlvMessage;
 }
 
+/*
+ * To create a TLV Programming Mode Message for PIC18 module to reset the target
+ *
+ * Return
+ *		tlvMessage		is a pointer to TLV object
+ */
 TLV *createProgrammingMode()
 {
 	TLV *tlvMessage = malloc(sizeof(TLV));
@@ -279,16 +283,17 @@ TLV *createProgrammingMode()
  */
 TLV *deleteTLV(TLV *tlv)
 {
-	if(tlv != NULL)
+	if(tlv != NULL && tlv->type == PROGRAM_MSG)
 	{
 		free(tlv->value);
 		free(tlv);
 	}
+	else
+		free(tlv);
 }
 
 /*
- * To open the comport for serial receiver and transmitter and send the tlv's length, type and value,
- * then close the comport if finish transmit
+ * To send the tlv's length, type and value through serial transmit
  *
  * Input
  *		tlv		is a pointer to TLV object
@@ -297,11 +302,7 @@ void sendTLV(TLV *tlv)
 {
 	int i;
 
-	// do{
-		RS232_SendByte(COM_PORT, tlv->type);
-		// Sleep(100);
-		// RS232_PollComport(COM_PORT, &receiveByte, 1);
-	// }while(receiveByte == NACK);
+	RS232_SendByte(COM_PORT, tlv->type);
 
 	RS232_SendByte(COM_PORT, tlv->length);
 

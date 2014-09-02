@@ -35,10 +35,6 @@ void test_readLine_should_read_first_string_of_line(void)
 
 	readLine(hexFile, buffer);
 
-	//printf("buffer: %s", buffer);
-	//printf("buffer: %s", buffer);
-	//TEST_ASSERT_EQUAL_readLine(":020000040000FA\n", buffer);
-
 	// Close the file
 	fclose(hexFile);
 
@@ -47,8 +43,6 @@ void test_readLine_should_read_first_string_of_line(void)
 	TEST_ASSERT_NOT_NULL(data);
 	TEST_ASSERT_NOT_NULL(data->line);
 	TEST_ASSERT_EQUAL_ReadLine(":020000040000FA\n", data);
-	// TEST_ASSERT_EQUAL_STRING(":020000040000FA\n", data->line);
-	// TEST_ASSERT_EQUAL(0, data->index);
 
 	deleteIntelHex16Data(data);
 }
@@ -72,9 +66,6 @@ void test_readLine_should_read__second_string_of_line(void)
 	readLine(hexFile, buffer);
 	readLine(hexFile, buffer);
 
-	//printf("buffer: %s", buffer);
-	//TEST_ASSERT_EQUAL_STRING(":10000000020E732745187327451873274518732761\n", buffer);
-
 	// Close the file
 	fclose(hexFile);
 
@@ -83,8 +74,6 @@ void test_readLine_should_read__second_string_of_line(void)
 	TEST_ASSERT_NOT_NULL(data);
 	TEST_ASSERT_NOT_NULL(data->line);
 	TEST_ASSERT_EQUAL_ReadLine(":10000000020E732745187327451873274518732761\n", data);
-	//TEST_ASSERT_EQUAL_STRING(":10000000020E732745187327451873274518732761\n", data->line);
-	//TEST_ASSERT_EQUAL(0, data->index);
 
 	deleteIntelHex16Data(data);
 }
@@ -322,18 +311,14 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
 	TEST_ASSERT_NOT_NULL(data->line);
 
 	tlvMessage = createProgramMessage(data, address);
-	//printf("tlv: %p\n", tlvMessage);
 
 	TEST_ASSERT_NOT_NULL(tlvMessage);
-	//TEST_ASSERT_EQUAL(PROGRAM_MSG, tlvMessage->type);
-	//TEST_ASSERT_EQUAL(16, tlvMessage->length);
 
 	char value[] = {0x10, 0x00, 0x30, 0x00,								//address
 					0x45, 0x18, 0x73, 0x27, 0x45, 0x18, 0x73, 0x27,		//data
 					0x45, 0x18, 0x73, 0x27, 0x45, 0x18, 0x73, 0x27,
 					0x04};												//checksum
 
-	//TEST_ASSERT_EQUAL(0, tlvMessage->value[0]);
 	TEST_ASSERT_EQUAL_TLV(tlvMessage->type, tlvMessage->length, value, tlvMessage);
 
 	deleteIntelHex16Data(data);

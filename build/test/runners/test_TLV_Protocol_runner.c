@@ -39,9 +39,12 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
+extern void test_openHexFile_should_return_0_if_fail_to_open_the_hex_file(void);
+extern void test_openHexFile_should_return_1_if_able_to_open_the_hex_file(void);
 extern void test_requestProgrammingMode_should_send_the_programming_mode_message_through_rs232(void);
 extern void test_requestProgrammingMode_should_return_0_if_receiveByte_is_NACK(void);
 extern void test_requestProgrammingMode_should_return_1_if_receiveByte_is_ACK(void);
+extern void test_sendDataCode(void);
 
 
 //=======Mock Management=====
@@ -77,9 +80,12 @@ int main(void)
 {
   Unity.TestFile = "test_TLV_Protocol.c";
   UnityBegin();
-  RUN_TEST(test_requestProgrammingMode_should_send_the_programming_mode_message_through_rs232, 17);
-  RUN_TEST(test_requestProgrammingMode_should_return_0_if_receiveByte_is_NACK, 33);
-  RUN_TEST(test_requestProgrammingMode_should_return_1_if_receiveByte_is_ACK, 50);
+  RUN_TEST(test_openHexFile_should_return_0_if_fail_to_open_the_hex_file, 18);
+  RUN_TEST(test_openHexFile_should_return_1_if_able_to_open_the_hex_file, 29);
+  RUN_TEST(test_requestProgrammingMode_should_send_the_programming_mode_message_through_rs232, 40);
+  RUN_TEST(test_requestProgrammingMode_should_return_0_if_receiveByte_is_NACK, 56);
+  RUN_TEST(test_requestProgrammingMode_should_return_1_if_receiveByte_is_ACK, 73);
+  RUN_TEST(test_sendDataCode, 90);
 
   return (UnityEnd());
 }
