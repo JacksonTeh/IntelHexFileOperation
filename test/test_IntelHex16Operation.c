@@ -24,7 +24,7 @@ void test_readLine_should_read_first_string_of_line(void)
 	IntelHex16Data *data;
 
 	// Open a file
-	hexFile = fopen("Test.hex", "r");
+	hexFile = fopen("C:/TDD Mini Project/IntelHexFileOperation/test/data/Test.hex", "r");
 
 	// Make sure that the file is successfully opened
 	if(hexFile == NULL)
@@ -54,7 +54,7 @@ void test_readLine_should_read__second_string_of_line(void)
 	IntelHex16Data *data;
 
 	// Open a file
-	hexFile = fopen("Test.hex", "r");
+	hexFile = fopen("C:/TDD Mini Project/IntelHexFileOperation/test/data/Test.hex", "r");
 
 	// Make sure that the file is successfully opened
 	if(hexFile == NULL)

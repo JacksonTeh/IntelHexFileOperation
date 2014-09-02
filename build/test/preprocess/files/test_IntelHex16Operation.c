@@ -43,7 +43,7 @@ void test_readLine_should_read_first_string_of_line(void)
 
 
 
- hexFile = fopen("Test.hex", "r");
+ hexFile = fopen("C:/TDD Mini Project/IntelHexFileOperation/test/data/Test.hex", "r");
 
 
 
@@ -103,7 +103,7 @@ void test_readLine_should_read__second_string_of_line(void)
 
 
 
- hexFile = fopen("Test.hex", "r");
+ hexFile = fopen("C:/TDD Mini Project/IntelHexFileOperation/test/data/Test.hex", "r");
 
 
 
