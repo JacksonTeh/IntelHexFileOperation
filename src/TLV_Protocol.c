@@ -13,7 +13,7 @@ int openHexFile(FILE *hexFile)
 		printf("Error: cannot open the file %s\n", IntelHexFile);
 		return 0;	// Terminate the program immediately
 	}
-	
+
 	return 1;
 }
 
@@ -36,7 +36,7 @@ int requestProgrammingMode(TLV *tlv, char receiveByte)
 int sendDataCode(FILE *hexFile, TLV *tlv, char *buffer)
 {
 	readLine(hexFile, buffer);
-	
+
 	data = createIntelHex16Data(buffer);
 }
 

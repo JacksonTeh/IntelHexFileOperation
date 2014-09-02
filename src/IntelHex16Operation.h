@@ -19,7 +19,6 @@ typedef struct
 	int index;
 } IntelHex16Data;
 
-//TLV *createMessageFromIntelHex16(char *line);
 void *readLine(FILE *hexFile, char *buffer);
 IntelHex16Data *createIntelHex16Data(char *line);
 IntelHex16Data *deleteIntelHex16Data(IntelHex16Data *data);
@@ -28,7 +27,6 @@ int getLengthFromIntelHex16Data(IntelHex16Data *data);
 int getTypeFromIntelHex16Data(IntelHex16Data *data);
 int getAddressFromIntelHex16Data(IntelHex16Data *data);
 int verifyCheckSumOfIntelHex16Data(IntelHex16Data *data);
-
 int getLSByteAndShiftRight(int long *address);
 
 TLV *createProgramMessage(IntelHex16Data *data, int addressHigh);
@@ -38,7 +36,5 @@ TLV *createProgrammingMode();
 TLV *deleteTLV(TLV *tlv);
 
 void sendTLV(TLV *tlv);
-
-// void tlvProtocol();
 
 #endif // IntelHex16Operation_H
