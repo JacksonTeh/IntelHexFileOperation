@@ -2,9 +2,11 @@
 #define TLV_Protocol_H
 #include "IntelHex16Operation.h"
 
-// int tlvProtocol();
-int openHexFile(FILE *hexFile);
-int requestProgrammingMode(TLV *tlv, char receiveByte);
-int sendDataCode(FILE *hexFile, TLV *tlv, char *buffer);
+int tlvProtocol();
+
+int requestProgrammingMode(char receiveByte);
+int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data *data, int *address);
+int sendDataCode(TLV *tlv, char receiveByte);
+void requestStartRunningMode(void);
 
 #endif // TLV_Protocol_H

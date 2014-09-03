@@ -3,30 +3,40 @@
   :path: test
   :file: test_TLV_Protocol.c
 :successes:
-- :test: test_openHexFile_should_return_0_if_fail_to_open_the_hex_file
+- :test: test_requestProgrammingMode_should_return_0_if_NACK_is_receive_from_RS232
   :line: 18
   :message: ''
-- :test: test_openHexFile_should_return_1_if_able_to_open_the_hex_file
-  :line: 29
+- :test: test_requestProgrammingMode_should_return_1_if_ACK_is_receive_from_RS232
+  :line: 34
   :message: ''
-- :test: test_requestProgrammingMode_should_send_the_programming_mode_message_through_rs232
-  :line: 40
+- :test: test_readHexLineAndCreateIntelHex16Data_should_return_address_if_the_type_in_hex_line_is_04
+  :line: 50
   :message: ''
-- :test: test_requestProgrammingMode_should_return_0_if_receiveByte_is_NACK
-  :line: 56
+- :test: test_readHexLineAndCreateIntelHex16Data_should_return_0_if_the_type_in_hex_line_is_01
+  :line: 70
   :message: ''
-- :test: test_requestProgrammingMode_should_return_1_if_receiveByte_is_ACK
-  :line: 73
-  :message: ''
-- :test: test_sendDataCode
+- :test: test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_line_is_other_than_04_and_01
   :line: 90
+  :message: ''
+- :test: test_sendDataCode_should_return_1_if_ACK_is_receive_from_RS232
+  :line: 111
+  :message: ''
+- :test: test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232
+  :line: 133
+  :message: ''
+- :test: test_requestStartRunningMode_should_send_the_start_running_message_through_serial_transmit
+  :line: 155
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 8
+  :passed: 8
   :failed: 0
   :ignored: 0
 :stdout:
-- 'Error: cannot open the file LEDBlink.hex'
+- ':020000040030FA'
+- ':00000001FF'
+- ':10000000020E732745187327451873274518732761'
+- No more data left
+- No more data left

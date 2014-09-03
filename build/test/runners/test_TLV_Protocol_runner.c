@@ -39,12 +39,14 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_openHexFile_should_return_0_if_fail_to_open_the_hex_file(void);
-extern void test_openHexFile_should_return_1_if_able_to_open_the_hex_file(void);
-extern void test_requestProgrammingMode_should_send_the_programming_mode_message_through_rs232(void);
-extern void test_requestProgrammingMode_should_return_0_if_receiveByte_is_NACK(void);
-extern void test_requestProgrammingMode_should_return_1_if_receiveByte_is_ACK(void);
-extern void test_sendDataCode(void);
+extern void test_requestProgrammingMode_should_return_0_if_NACK_is_receive_from_RS232(void);
+extern void test_requestProgrammingMode_should_return_1_if_ACK_is_receive_from_RS232(void);
+extern void test_readHexLineAndCreateIntelHex16Data_should_return_address_if_the_type_in_hex_line_is_04(void);
+extern void test_readHexLineAndCreateIntelHex16Data_should_return_0_if_the_type_in_hex_line_is_01(void);
+extern void test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_line_is_other_than_04_and_01(void);
+extern void test_sendDataCode_should_return_1_if_ACK_is_receive_from_RS232(void);
+extern void test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232(void);
+extern void test_requestStartRunningMode_should_send_the_start_running_message_through_serial_transmit(void);
 
 
 //=======Mock Management=====
@@ -80,12 +82,14 @@ int main(void)
 {
   Unity.TestFile = "test_TLV_Protocol.c";
   UnityBegin();
-  RUN_TEST(test_openHexFile_should_return_0_if_fail_to_open_the_hex_file, 18);
-  RUN_TEST(test_openHexFile_should_return_1_if_able_to_open_the_hex_file, 29);
-  RUN_TEST(test_requestProgrammingMode_should_send_the_programming_mode_message_through_rs232, 40);
-  RUN_TEST(test_requestProgrammingMode_should_return_0_if_receiveByte_is_NACK, 56);
-  RUN_TEST(test_requestProgrammingMode_should_return_1_if_receiveByte_is_ACK, 73);
-  RUN_TEST(test_sendDataCode, 90);
+  RUN_TEST(test_requestProgrammingMode_should_return_0_if_NACK_is_receive_from_RS232, 18);
+  RUN_TEST(test_requestProgrammingMode_should_return_1_if_ACK_is_receive_from_RS232, 34);
+  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_address_if_the_type_in_hex_line_is_04, 50);
+  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_0_if_the_type_in_hex_line_is_01, 70);
+  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_line_is_other_than_04_and_01, 90);
+  RUN_TEST(test_sendDataCode_should_return_1_if_ACK_is_receive_from_RS232, 111);
+  RUN_TEST(test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232, 133);
+  RUN_TEST(test_requestStartRunningMode_should_send_the_start_running_message_through_serial_transmit, 155);
 
   return (UnityEnd());
 }
