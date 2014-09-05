@@ -203,7 +203,7 @@ int getLSByteAndShiftRight(int long *address)
  *
  * Input
  *		data			is a pointer to IntelHex16Data object
- * 		addressHigh		is a upper address of the starting address
+ *		addressHigh		is a upper address of the starting address
  *
  * Return
  *		tlvMessage		is a pointer to TLV object
@@ -279,7 +279,7 @@ TLV *createProgrammingMode()
  * To free the memory allocated by tlv
  *
  * Input
- *		tlv	is a pointer to TLV object
+ *		tlv		is a pointer to TLV object
  */
 TLV *deleteTLV(TLV *tlv)
 {

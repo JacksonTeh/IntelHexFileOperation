@@ -13,8 +13,8 @@
  *		receiveByte		is the byte receive through RS232
  *
  * Return
- *		0				to indicate Programming Mode is unable to request
- *		1				to indicate Programming Mode is able to request
+ *		0		to indicate Programming Mode is unable to request
+ *		1		to indicate Programming Mode is able to request
  */
 int requestProgrammingMode(char receiveByte)
 {
@@ -42,9 +42,9 @@ int requestProgrammingMode(char receiveByte)
  *		address		is a pointer to two high byte of extented address
  *
  * Return
- *		0			to indicate the end of the hex line
- *		1			to indicate there still some hex line left
- *		-1			to indicate nothing to return
+ *		0		to indicate the end of the hex line
+ *		1		to indicate there still some hex line left
+ *		-1		to indicate nothing to return
  */
 int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data *data, int *address)
 {
@@ -82,8 +82,8 @@ int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data *data, int 
  *		receiveByte		is the byte receive through RS232
  *
  * Return
- *		0				to indicate NACK is receive from the PIC module
- *		1				to indicate the program is able to flash
+ *		0		to indicate NACK is receive from the PIC module
+ *		1		to indicate the program is able to flash
  */
 int sendDataCode(TLV *tlv, char receiveByte)
 {
@@ -129,7 +129,7 @@ int tlvProtocol()
 	RS232_OpenComport(COM_PORT, 9600);
 
 	receiveByte = NACK;
- 	do{
+	do{
 		if(i == 3)
 			return 0;	// Terminate the program immediately if the programming mode is unable to set
 

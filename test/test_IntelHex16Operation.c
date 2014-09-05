@@ -163,8 +163,6 @@ void test_getByteFromIntelHex16Data_given_index_exceed_the_no_of_byte_of_the_lin
 
 	result = getByteFromIntelHex16Data(data, 8);
 
-	//printf("data: %c\n", data->line[15]);
-
 	TEST_ASSERT_NOT_NULL(data);
 	TEST_ASSERT_NOT_NULL(data->line);
 	TEST_ASSERT_EQUAL(-1, result);
@@ -390,7 +388,7 @@ void test_sendTLV_should_send_TLV_byte_by_byte(void)
 	CEXCEPTION_T err;
 
 	data = createIntelHex16Data(buffer1);
-
+	
 	TEST_ASSERT_NOT_NULL(data);
 	TEST_ASSERT_NOT_NULL(data->line);
 

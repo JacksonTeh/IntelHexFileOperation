@@ -1,0 +1,100 @@
+---
+:source:
+  :path: test
+  :file: test_IntelHex16Operation.c
+:successes:
+- :test: test_readLine_should_read_first_string_of_line
+  :line: 20
+  :message: ''
+- :test: test_readLine_should_read__second_string_of_line
+  :line: 50
+  :message: ''
+- :test: test_createIntelHex16Data_should_throw_an_exception_if_first_character_is_not_colon
+  :line: 81
+  :message: ''
+- :test: test_getByteFromIntelHex16Data_given_index_1_should_get_the_first_byte
+  :line: 101
+  :message: ''
+- :test: test_getByteFromIntelHex16Data_given_index_4_should_get_the_forth_byte
+  :line: 119
+  :message: ''
+- :test: test_getByteFromIntelHex16Data_given_index_0_should_return_minus_1
+  :line: 137
+  :message: ''
+- :test: test_getByteFromIntelHex16Data_given_index_exceed_the_no_of_byte_of_the_line_should_return_minus_1
+  :line: 155
+  :message: ''
+- :test: test_getLengthFromIntelHex16Data_should_get_length_from_INTEL_HEX_FILE
+  :line: 173
+  :message: ''
+- :test: test_getTypeFromIntelHex16Data_should_get_type_from_INTEL_HEX_FILE
+  :line: 191
+  :message: ''
+- :test: test_getAddressFromIntelHex16Data_should_get_address_from_INTEL_HEX_FILE
+  :line: 209
+  :message: ''
+- :test: test_verifyCheckSumOfIntelHex16Data_should_return_1_if_no_error
+  :line: 227
+  :message: ''
+- :test: test_verifyCheckSumOfIntelHex16Data_should_return_0_if_got_error
+  :line: 245
+  :message: ''
+- :test: test_getLSByteAndShiftRight_should_shift_the_address_to_the_right
+  :line: 263
+  :message: ''
+- :test: test_createProgramMessage_should_create_message_for_the_program
+  :line: 287
+  :message: ''
+- :test: test_createProgramMessage_should_raise_an_exception_if_wrong_checksum
+  :line: 326
+  :message: ''
+- :test: test_createProgrammingMode_should_create_programming_mode_message
+  :line: 364
+  :message: ''
+- :test: test_createStartRunningMessage_should_create_start_running_message
+  :line: 373
+  :message: ''
+- :test: test_sendTLV_should_send_TLV_byte_by_byte
+  :line: 382
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 18
+  :passed: 18
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ':020000040000FA'
+- ':020000040000FA'
+- ':10000000020E732745187327451873274518732761'
+- 'Success: Exception generated. Error code: 1.'
+- Invalid index
+- No more data left
+- No more data left
+- No more data left
+- No more data left
+- 'actual->value[0]: 10'
+- 'actual->value[1]:  0'
+- 'actual->value[2]: 30'
+- 'actual->value[3]:  0'
+- 'actual->value[4]: 45'
+- 'actual->value[5]: 18'
+- 'actual->value[6]: 73'
+- 'actual->value[7]: 27'
+- 'actual->value[8]: 45'
+- 'actual->value[9]: 18'
+- 'actual->value[10]: 73'
+- 'actual->value[11]: 27'
+- 'actual->value[12]: 45'
+- 'actual->value[13]: 18'
+- 'actual->value[14]: 73'
+- 'actual->value[15]: 27'
+- 'actual->value[16]: 45'
+- 'actual->value[17]: 18'
+- 'actual->value[18]: 73'
+- 'actual->value[19]: 27'
+- 'actual->value[20]:  4'
+- No more data left
+- 'Success: Exception generated. Error code: 2.'
+- No more data left
