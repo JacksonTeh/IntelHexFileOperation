@@ -53,7 +53,7 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_address_if_the_type_i
 	IntelHex16Data *data;
 	int result, address = 0x0000;
 
-	hexFile = fopen("C:/TDD Mini Project/IntelHexFileOperation/test/data/Test02.hex", "r");
+	hexFile = fopen("test/data/Test02.hex", "r");
 
 	if(hexFile == NULL)
 	{
@@ -73,7 +73,7 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_0_if_the_type_in_hex_
 	IntelHex16Data *data;
 	int result, address = 0x0000;
 
-	hexFile = fopen("C:/TDD Mini Project/IntelHexFileOperation/test/data/Test03.hex", "r");
+	hexFile = fopen("test/data/Test03.hex", "r");
 
 	if(hexFile == NULL)
 	{
@@ -93,7 +93,7 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_
 	IntelHex16Data *data;
 	int result, address = 0x0000;
 
-	hexFile = fopen("C:/TDD Mini Project/IntelHexFileOperation/test/data/Test04.hex", "r");
+	hexFile = fopen("test/data/Test04.hex", "r");
 
 	if(hexFile == NULL)
 	{

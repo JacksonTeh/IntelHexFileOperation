@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #define COM_PORT 4
-#define IntelHexFile "C:/TDD Mini Project/IntelHexFileOperation/test/data/LEDBlink.hex"
+#define IntelHexFile "test/data/LEDBlink.hex"
 
 /*
  * To request Programming Mode from the PIC module
