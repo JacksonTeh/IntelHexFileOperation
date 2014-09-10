@@ -155,7 +155,7 @@ int tlvProtocol()
     RS232_CloseComport(COM_PORT);
 
     fclose(hexFile);
-	
+
     return 1;
 }
 
