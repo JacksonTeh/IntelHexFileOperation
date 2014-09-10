@@ -7,8 +7,6 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-#define COM_PORT 4
-
 void setUp(void)
 {
 }

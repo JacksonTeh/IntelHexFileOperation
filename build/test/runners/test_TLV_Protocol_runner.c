@@ -82,14 +82,14 @@ int main(void)
 {
   Unity.TestFile = "test_TLV_Protocol.c";
   UnityBegin();
-  RUN_TEST(test_requestProgrammingMode_should_return_0_if_NACK_is_receive_from_RS232, 18);
-  RUN_TEST(test_requestProgrammingMode_should_return_1_if_ACK_is_receive_from_RS232, 34);
-  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_address_if_the_type_in_hex_line_is_04, 50);
-  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_0_if_the_type_in_hex_line_is_01, 70);
-  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_line_is_other_than_04_and_01, 90);
-  RUN_TEST(test_sendDataCode_should_return_1_if_ACK_is_receive_from_RS232, 111);
-  RUN_TEST(test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232, 133);
-  RUN_TEST(test_requestStartRunningMode_should_send_the_start_running_message_through_serial_transmit, 155);
+  RUN_TEST(test_requestProgrammingMode_should_return_0_if_NACK_is_receive_from_RS232, 16);
+  RUN_TEST(test_requestProgrammingMode_should_return_1_if_ACK_is_receive_from_RS232, 32);
+  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_address_if_the_type_in_hex_line_is_04, 48);
+  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_0_if_the_type_in_hex_line_is_01, 68);
+  RUN_TEST(test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_line_is_other_than_04_and_01, 88);
+  RUN_TEST(test_sendDataCode_should_return_1_if_ACK_is_receive_from_RS232, 109);
+  RUN_TEST(test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232, 131);
+  RUN_TEST(test_requestStartRunningMode_should_send_the_start_running_message_through_serial_transmit, 153);
 
   return (UnityEnd());
 }

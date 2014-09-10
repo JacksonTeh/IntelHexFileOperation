@@ -92,24 +92,24 @@ int main(void)
 {
   Unity.TestFile = "test_IntelHex16Operation.c";
   UnityBegin();
-  RUN_TEST(test_readLine_should_read_first_string_of_line, 20);
-  RUN_TEST(test_readLine_should_read__second_string_of_line, 50);
-  RUN_TEST(test_createIntelHex16Data_should_throw_an_exception_if_first_character_is_not_colon, 81);
-  RUN_TEST(test_getByteFromIntelHex16Data_given_index_1_should_get_the_first_byte, 101);
-  RUN_TEST(test_getByteFromIntelHex16Data_given_index_4_should_get_the_forth_byte, 119);
-  RUN_TEST(test_getByteFromIntelHex16Data_given_index_0_should_return_minus_1, 137);
-  RUN_TEST(test_getByteFromIntelHex16Data_given_index_exceed_the_no_of_byte_of_the_line_should_return_minus_1, 155);
-  RUN_TEST(test_getLengthFromIntelHex16Data_should_get_length_from_INTEL_HEX_FILE, 173);
-  RUN_TEST(test_getTypeFromIntelHex16Data_should_get_type_from_INTEL_HEX_FILE, 191);
-  RUN_TEST(test_getAddressFromIntelHex16Data_should_get_address_from_INTEL_HEX_FILE, 209);
-  RUN_TEST(test_verifyCheckSumOfIntelHex16Data_should_return_1_if_no_error, 227);
-  RUN_TEST(test_verifyCheckSumOfIntelHex16Data_should_return_0_if_got_error, 245);
-  RUN_TEST(test_getLSByteAndShiftRight_should_shift_the_address_to_the_right, 263);
-  RUN_TEST(test_createProgramMessage_should_create_message_for_the_program, 287);
-  RUN_TEST(test_createProgramMessage_should_raise_an_exception_if_wrong_checksum, 326);
-  RUN_TEST(test_createProgrammingMode_should_create_programming_mode_message, 364);
-  RUN_TEST(test_createStartRunningMessage_should_create_start_running_message, 373);
-  RUN_TEST(test_sendTLV_should_send_TLV_byte_by_byte, 382);
+  RUN_TEST(test_readLine_should_read_first_string_of_line, 18);
+  RUN_TEST(test_readLine_should_read__second_string_of_line, 48);
+  RUN_TEST(test_createIntelHex16Data_should_throw_an_exception_if_first_character_is_not_colon, 79);
+  RUN_TEST(test_getByteFromIntelHex16Data_given_index_1_should_get_the_first_byte, 99);
+  RUN_TEST(test_getByteFromIntelHex16Data_given_index_4_should_get_the_forth_byte, 117);
+  RUN_TEST(test_getByteFromIntelHex16Data_given_index_0_should_return_minus_1, 135);
+  RUN_TEST(test_getByteFromIntelHex16Data_given_index_exceed_the_no_of_byte_of_the_line_should_return_minus_1, 153);
+  RUN_TEST(test_getLengthFromIntelHex16Data_should_get_length_from_INTEL_HEX_FILE, 171);
+  RUN_TEST(test_getTypeFromIntelHex16Data_should_get_type_from_INTEL_HEX_FILE, 189);
+  RUN_TEST(test_getAddressFromIntelHex16Data_should_get_address_from_INTEL_HEX_FILE, 207);
+  RUN_TEST(test_verifyCheckSumOfIntelHex16Data_should_return_1_if_no_error, 225);
+  RUN_TEST(test_verifyCheckSumOfIntelHex16Data_should_return_0_if_got_error, 243);
+  RUN_TEST(test_getLSByteAndShiftRight_should_shift_the_address_to_the_right, 261);
+  RUN_TEST(test_createProgramMessage_should_create_message_for_the_program, 285);
+  RUN_TEST(test_createProgramMessage_should_raise_an_exception_if_wrong_checksum, 324);
+  RUN_TEST(test_createProgrammingMode_should_create_programming_mode_message, 362);
+  RUN_TEST(test_createStartRunningMessage_should_create_start_running_message, 371);
+  RUN_TEST(test_sendTLV_should_send_TLV_byte_by_byte, 380);
 
   return (UnityEnd());
 }

@@ -3,9 +3,6 @@
 #include <string.h>
 #include <malloc.h>
 
-#define addressAndCS 5
-#define COM_PORT 4
-
 // char line[1024];
 
 /*

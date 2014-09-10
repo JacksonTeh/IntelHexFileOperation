@@ -9,10 +9,6 @@
 
 
 
-
-
-
-
 void setUp(void)
 
 {
@@ -75,11 +71,11 @@ void test_readLine_should_read_first_string_of_line(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)43);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)41);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)44);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)42);;};
 
- assertEqualReadLine(":020000040000FA\n", data, 45 );;
+ assertEqualReadLine(":020000040000FA\n", data, 43 );;
 
 
 
@@ -137,11 +133,11 @@ void test_readLine_should_read__second_string_of_line(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)74);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)72);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)75);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)73);;};
 
- assertEqualReadLine(":10000000020E732745187327451873274518732761\n", data, 76 );;
+ assertEqualReadLine(":10000000020E732745187327451873274518732761\n", data, 74 );;
 
 
 
@@ -171,13 +167,13 @@ void test_createIntelHex16Data_should_throw_an_exception_if_first_character_is_n
 
   data = createIntelHex16Data(buffer);
 
-  UnityFail( ("Should generate an exception due to first character is not colon."), (_U_UINT)91);;
+  UnityFail( ("Should generate an exception due to first character is not colon."), (_U_UINT)89);;
 
  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A))
 
  {
 
-  UnityAssertEqualNumber((_U_SINT)((ERR_NO_COLON)), (_U_SINT)((err)), ("Expected ERR_NO_COLON exception"), (_U_UINT)94, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ERR_NO_COLON)), (_U_SINT)((err)), ("Expected ERR_NO_COLON exception"), (_U_UINT)92, UNITY_DISPLAY_STYLE_INT);
 
   printf("Success: Exception generated. Error code: %d.\n", err);
 
@@ -213,11 +209,11 @@ void test_getByteFromIntelHex16Data_given_index_1_should_get_the_first_byte(void
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)112);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)110);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)113);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)111);;};
 
- UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)114, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)112, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -249,11 +245,11 @@ void test_getByteFromIntelHex16Data_given_index_4_should_get_the_forth_byte(void
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)130);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)128);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)131);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)129);;};
 
- UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)132, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)130, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -285,11 +281,11 @@ void test_getByteFromIntelHex16Data_given_index_0_should_return_minus_1(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)148);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)146);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)149);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)147);;};
 
- UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)150, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)148, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -321,11 +317,11 @@ void test_getByteFromIntelHex16Data_given_index_exceed_the_no_of_byte_of_the_lin
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)166);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)164);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)167);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)165);;};
 
- UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)168, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)166, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -357,11 +353,11 @@ void test_getLengthFromIntelHex16Data_should_get_length_from_INTEL_HEX_FILE(void
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)184);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)182);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)185);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)183);;};
 
- UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)186, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)184, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -393,11 +389,11 @@ void test_getTypeFromIntelHex16Data_should_get_type_from_INTEL_HEX_FILE(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)202);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)200);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)203);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)201);;};
 
- UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)204, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)202, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -429,11 +425,11 @@ void test_getAddressFromIntelHex16Data_should_get_address_from_INTEL_HEX_FILE(vo
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)220);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)218);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)221);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)219);;};
 
- UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)222, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)220, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -465,11 +461,11 @@ void test_verifyCheckSumOfIntelHex16Data_should_return_1_if_no_error(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)238);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)236);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)239);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)237);;};
 
- UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)240, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)238, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -501,11 +497,11 @@ void test_verifyCheckSumOfIntelHex16Data_should_return_0_if_got_error(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)256);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)254);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)257);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)255);;};
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)258, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)256, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -539,7 +535,7 @@ void test_getLSByteAndShiftRight_should_shift_the_address_to_the_right(void)
 
 
 
- UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)275, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)273, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -547,13 +543,13 @@ void test_getLSByteAndShiftRight_should_shift_the_address_to_the_right(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)279);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)277);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)280);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)278);;};
 
- UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((byte)), (((void *)0)), (_U_UINT)281, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((byte)), (((void *)0)), (_U_UINT)279, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)282, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)280, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -583,9 +579,9 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)297);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)295);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)298);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)296);;};
 
 
 
@@ -605,9 +601,9 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)308);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)306);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)309);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)307);;};
 
 
 
@@ -615,7 +611,7 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
 
 
 
- if ((((tlvMessage)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)313);;};
+ if ((((tlvMessage)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)311);;};
 
 
 
@@ -629,7 +625,7 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
 
 
 
- assertEqualTLV(tlvMessage->type, tlvMessage->length, value, tlvMessage, 320 );;
+ assertEqualTLV(tlvMessage->type, tlvMessage->length, value, tlvMessage, 318 );;
 
 
 
@@ -661,9 +657,9 @@ void test_createProgramMessage_should_raise_an_exception_if_wrong_checksum(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)336);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)334);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)337);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)335);;};
 
 
 
@@ -683,9 +679,9 @@ void test_createProgramMessage_should_raise_an_exception_if_wrong_checksum(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)347);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)345);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)348);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)346);;};
 
 
 
@@ -695,13 +691,13 @@ void test_createProgramMessage_should_raise_an_exception_if_wrong_checksum(void)
 
   tlvMessage = createProgramMessage(data, address);
 
-  UnityFail( ("Should generate an exception due to wrong checksum."), (_U_UINT)353);;
+  UnityFail( ("Should generate an exception due to wrong checksum."), (_U_UINT)351);;
 
  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A))
 
  {
 
-  UnityAssertEqualNumber((_U_SINT)((ERR_WRONG_CHECKSUM)), (_U_SINT)((err)), ("Expected ERR_WRONG_CHECKSUM exception"), (_U_UINT)356, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ERR_WRONG_CHECKSUM)), (_U_SINT)((err)), ("Expected ERR_WRONG_CHECKSUM exception"), (_U_UINT)354, UNITY_DISPLAY_STYLE_INT);
 
   printf("Success: Exception generated. Error code: %d.\n", err);
 
@@ -725,7 +721,7 @@ void test_createProgrammingMode_should_create_programming_mode_message(void)
 
 
 
- UnityAssertEqualNumber((_U_SINT)((PROGRAMMING_MODE)), (_U_SINT)((tlvMessage->type)), (((void *)0)), (_U_UINT)368, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((PROGRAMMING_MODE)), (_U_SINT)((tlvMessage->type)), (((void *)0)), (_U_UINT)366, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -743,7 +739,7 @@ void test_createStartRunningMessage_should_create_start_running_message(void)
 
 
 
- UnityAssertEqualNumber((_U_SINT)((START_RUNNING)), (_U_SINT)((tlvMessage->type)), (((void *)0)), (_U_UINT)377, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((START_RUNNING)), (_U_SINT)((tlvMessage->type)), (((void *)0)), (_U_UINT)375, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -773,9 +769,9 @@ void test_sendTLV_should_send_TLV_byte_by_byte(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)392);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)390);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)393);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)391);;};
 
 
 
@@ -795,9 +791,9 @@ void test_sendTLV_should_send_TLV_byte_by_byte(void)
 
 
 
- if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)403);;};
+ if ((((data)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)401);;};
 
- if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)404);;};
+ if ((((data->line)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)402);;};
 
 
 
@@ -805,19 +801,19 @@ void test_sendTLV_should_send_TLV_byte_by_byte(void)
 
 
 
- if ((((tlvMessage)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)408);;};
+ if ((((tlvMessage)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)406);;};
 
 
 
- RS232_SendByte_CMockExpectAndReturn(410, 4, tlvMessage->type, 0);
+ RS232_SendByte_CMockExpectAndReturn(408, 4, tlvMessage->type, 0);
 
- RS232_SendByte_CMockExpectAndReturn(411, 4, tlvMessage->length, 0);
+ RS232_SendByte_CMockExpectAndReturn(409, 4, tlvMessage->length, 0);
 
 
 
  for(i = 0; i < tlvMessage->length; i++)
 
-  RS232_SendByte_CMockExpectAndReturn(414, 4, tlvMessage->value[i], 0);
+  RS232_SendByte_CMockExpectAndReturn(412, 4, tlvMessage->value[i], 0);
 
 
 

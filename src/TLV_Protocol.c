@@ -3,9 +3,6 @@
 #include "rs232.h"
 #include <stdio.h>
 
-#define COM_PORT 4
-#define IntelHexFile "test/data/LEDBlink.hex"
-
 /*
  * To request Programming Mode from the PIC module
  *
@@ -21,7 +18,7 @@ int requestProgrammingMode(char receiveByte)
 	TLV *tlvMessage = createProgrammingMode();
 
 	RS232_SendByte(COM_PORT, tlvMessage->type);
-	Sleep(100);
+	// Sleep(100);
 
 	RS232_PollComport(COM_PORT, &receiveByte, 1);
 
@@ -137,7 +134,7 @@ int tlvProtocol()
 		i++;
 	}while(!programmingModeStatus);		//repeat request again if the ACK is not receive
 
-	receiveByte = ACK;
+	/* receiveByte = ACK;
 	do{
 		result = readHexLineAndCreateIntelHex16Data(hexFile, data, &address);
 
@@ -152,13 +149,15 @@ int tlvProtocol()
 			deleteIntelHex16Data(data);
 			deleteTLV(tlvMessage);
 		}
-	}while(result == 0);
+	}while(result != 0);
 
-	requestStartRunningMode();
+	requestStartRunningMode();*/
 
 	RS232_CloseComport(COM_PORT);
 
 	fclose(hexFile);
+	
+	return 1;
 }
 
 /* 	RS232_SendByte(COM_PORT, 0x01);

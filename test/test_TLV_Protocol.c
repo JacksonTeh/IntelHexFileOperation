@@ -5,8 +5,6 @@
 #include "mock_rs232.h"
 #include <stdio.h>
 
-#define COM_PORT 4
-
 void setUp(void)
 {
 }
@@ -162,3 +160,11 @@ void test_requestStartRunningMode_should_send_the_start_running_message_through_
 
 	deleteTLV(tlvMessage);
 }
+/* 
+void test_tlvProtocol(void)
+{
+	int result;
+	
+	result = tlvProtocol();
+	TEST_ASSERT_EQUAL(1, result);
+}*/

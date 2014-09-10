@@ -7,10 +7,6 @@
 
 
 
-
-
-
-
 void setUp(void)
 
 {
@@ -39,9 +35,9 @@ void test_requestProgrammingMode_should_return_0_if_NACK_is_receive_from_RS232(v
 
 
 
- RS232_SendByte_CMockExpectAndReturn(24, 4, tlvMessage->type, 0);
+ RS232_SendByte_CMockExpectAndReturn(22, 4, tlvMessage->type, 0);
 
- RS232_PollComport_CMockExpectAndReturn(25, 4, &receiveByte, 1, 1);
+ RS232_PollComport_CMockExpectAndReturn(23, 4, &receiveByte, 1, 1);
 
 
 
@@ -49,7 +45,7 @@ void test_requestProgrammingMode_should_return_0_if_NACK_is_receive_from_RS232(v
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)29, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)27, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -71,9 +67,9 @@ void test_requestProgrammingMode_should_return_1_if_ACK_is_receive_from_RS232(vo
 
 
 
- RS232_SendByte_CMockExpectAndReturn(40, 4, tlvMessage->type, 0);
+ RS232_SendByte_CMockExpectAndReturn(38, 4, tlvMessage->type, 0);
 
- RS232_PollComport_CMockExpectAndReturn(41, 4, &receiveByte, 1, 1);
+ RS232_PollComport_CMockExpectAndReturn(39, 4, &receiveByte, 1, 1);
 
 
 
@@ -81,7 +77,7 @@ void test_requestProgrammingMode_should_return_1_if_ACK_is_receive_from_RS232(vo
 
 
 
- UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)45, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)43, UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -123,9 +119,9 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_address_if_the_type_i
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0x0030)), (_U_SINT)((address)), (((void *)0)), (_U_UINT)66, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0x0030)), (_U_SINT)((address)), (((void *)0)), (_U_UINT)64, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)67, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)65, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -163,9 +159,9 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_0_if_the_type_in_hex_
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((address)), (((void *)0)), (_U_UINT)86, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((address)), (((void *)0)), (_U_UINT)84, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)87, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)85, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -203,9 +199,9 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((address)), (((void *)0)), (_U_UINT)106, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((address)), (((void *)0)), (_U_UINT)104, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)107, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)105, UNITY_DISPLAY_STYLE_INT);
 
  deleteIntelHex16Data(data);
 
@@ -227,19 +223,19 @@ void test_sendDataCode_should_return_1_if_ACK_is_receive_from_RS232(void)
 
 
 
- RS232_SendByte_CMockExpectAndReturn(118, 4, tlvMessage->type, 0);
+ RS232_SendByte_CMockExpectAndReturn(116, 4, tlvMessage->type, 0);
 
- RS232_SendByte_CMockExpectAndReturn(119, 4, tlvMessage->length, 0);
+ RS232_SendByte_CMockExpectAndReturn(117, 4, tlvMessage->length, 0);
 
 
 
  for(i = 0; i < tlvMessage->length; i++)
 
-  RS232_SendByte_CMockExpectAndReturn(122, 4, tlvMessage->value[i], 0);
+  RS232_SendByte_CMockExpectAndReturn(120, 4, tlvMessage->value[i], 0);
 
 
 
- RS232_PollComport_CMockExpectAndReturn(124, 4, &receiveByte, 1, 1);
+ RS232_PollComport_CMockExpectAndReturn(122, 4, &receiveByte, 1, 1);
 
 
 
@@ -247,7 +243,7 @@ void test_sendDataCode_should_return_1_if_ACK_is_receive_from_RS232(void)
 
 
 
- UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)128, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)126, UNITY_DISPLAY_STYLE_INT);
 
  deleteIntelHex16Data(data);
 
@@ -271,19 +267,19 @@ void test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232(void)
 
 
 
- RS232_SendByte_CMockExpectAndReturn(140, 4, tlvMessage->type, 0);
+ RS232_SendByte_CMockExpectAndReturn(138, 4, tlvMessage->type, 0);
 
- RS232_SendByte_CMockExpectAndReturn(141, 4, tlvMessage->length, 0);
+ RS232_SendByte_CMockExpectAndReturn(139, 4, tlvMessage->length, 0);
 
 
 
  for(i = 0; i < tlvMessage->length; i++)
 
-  RS232_SendByte_CMockExpectAndReturn(144, 4, tlvMessage->value[i], 0);
+  RS232_SendByte_CMockExpectAndReturn(142, 4, tlvMessage->value[i], 0);
 
 
 
- RS232_PollComport_CMockExpectAndReturn(146, 4, &receiveByte, 1, 1);
+ RS232_PollComport_CMockExpectAndReturn(144, 4, &receiveByte, 1, 1);
 
 
 
@@ -291,7 +287,7 @@ void test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232(void)
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)150, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)148, UNITY_DISPLAY_STYLE_INT);
 
  deleteIntelHex16Data(data);
 
@@ -309,7 +305,7 @@ void test_requestStartRunningMode_should_send_the_start_running_message_through_
 
 
 
- RS232_SendByte_CMockExpectAndReturn(159, 4, tlvMessage->type, 0);
+ RS232_SendByte_CMockExpectAndReturn(157, 4, tlvMessage->type, 0);
 
 
 
