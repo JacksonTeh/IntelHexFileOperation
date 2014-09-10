@@ -2,8 +2,8 @@
 #define TLV_Protocol_H
 #include "IntelHex16Operation.h"
 
-#define COM_PORT 		4
-#define IntelHexFile	"test/data/LEDBlink.hex"
+#define COM_PORT        4
+#define IntelHexFile    "test/data/LEDBlink.hex"
 
 int tlvProtocol();
 
