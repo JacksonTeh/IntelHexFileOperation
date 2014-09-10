@@ -1,6 +1,0 @@
----
-- CustomTypeAssertion.h
-- IntelHex16Operation.h
-- TLV_Protocol.h
-- mock_rs232.h
-- unity.h
