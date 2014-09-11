@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define COM_PORT        4
-#define addressAndCS    5
+#define COM_PORT                    4
+#define LEN_OF_ADDR_PLUS_CHKSUM     5
 
 typedef enum {ERR_NO_ERROR, ERR_NO_COLON, ERR_WRONG_CHECKSUM} ErrorLine;
 typedef enum {NOTHING, PROGRAM_MSG, START_RUNNING, TARGET_AVAILABLITY, ACK, NACK, PROGRAMMING_MODE} TLV_Message;

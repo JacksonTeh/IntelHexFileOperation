@@ -19,6 +19,8 @@ int requestProgrammingMode(char receiveByte)
 
     RS232_SendByte(COM_PORT, tlvMessage->type);
 
+    Sleep(100);
+
     RS232_PollComport(COM_PORT, &receiveByte, 1);
 
     deleteTLV(tlvMessage);
@@ -81,7 +83,24 @@ int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data *data, int 
  *      0       to indicate NACK is receive from the PIC module
  *      1       to indicate the program is able to flash
  */
-int sendDataCode(TLV *tlv, char receiveByte)
+int sendDataCode(IntelHex16Data *data, int *address, char receiveByte)
+{
+    TLV *tlvMessage = createProgrammingMode(&data, address);
+    deleteIntelHex16Data(data);
+
+    sendTLV(tlvMessage);
+    Sleep(100);
+
+    RS232_PollComport(COM_PORT, &receiveByte, 1);
+
+    deleteTLV(tlvMessage);
+
+    if(receiveByte != ACK)
+        return 0;
+
+    return 1;
+}
+/* int sendDataCode(TLV *tlv, char receiveByte)
 {
     sendTLV(tlv);
     Sleep(100);
@@ -92,7 +111,7 @@ int sendDataCode(TLV *tlv, char receiveByte)
         return 0;
 
     return 1;
-}
+} */
 
 /*
  * To request Start Running Mode from the PIC module
@@ -104,59 +123,6 @@ void requestStartRunningMode(void)
     RS232_SendByte(COM_PORT, tlvMessage->type);
 
     deleteTLV(tlvMessage);
-}
-
-int tlvProtocol()
-{
-    int address = 0x0000, programmingModeStatus, sendStatus, result, i = 0;
-    char receiveByte;
-    FILE *hexFile;
-    IntelHex16Data *data;
-    TLV *tlvMessage;
-
-    hexFile = fopen(IntelHexFile, "r");
-
-    if(hexFile == NULL)
-    {
-        printf("error: cannot open the file LEDBlink.hex");
-        return 0;       // Terminate the program immediately if file unable to open
-    }
-
-    RS232_OpenComport(COM_PORT, 9600);
-
-    receiveByte = NACK;
-    do{
-        if(i == 3)
-            return 0;   // Terminate the program immediately if the programming mode is unable to set
-
-        programmingModeStatus = requestProgrammingMode(receiveByte);
-        i++;
-    }while(!programmingModeStatus);     //repeat request again if the ACK is not receive
-
-    /* receiveByte = ACK;
-    do{
-        result = readHexLineAndCreateIntelHex16Data(hexFile, data, &address);
-
-        if(result == 1)
-        {
-            tlvMessage = createProgrammingMode(data, address);
-
-            do{
-                sendStatus = sendDataCode(tlvMessage, receiveByte);
-            }while(!sendStatus);        //repeat sending the same tlv if the ACK is not receive
-
-            deleteIntelHex16Data(data);
-            deleteTLV(tlvMessage);
-        }
-    }while(result != 0);
-
-    requestStartRunningMode();*/
-
-    RS232_CloseComport(COM_PORT);
-
-    fclose(hexFile);
-
-    return 1;
 }
 
 /* 	RS232_SendByte(COM_PORT, 0x01);

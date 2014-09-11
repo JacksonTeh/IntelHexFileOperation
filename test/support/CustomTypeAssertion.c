@@ -36,13 +36,16 @@ void assertEqualReadLine(char *expectedLine, IntelHex16Data *data, int line)
 void assertEqualTLV(char type, char length, char value[], TLV *actual, int line)
 {
 	int i = 0;
+    char msg[64];
 
 	TEST_ASSERT_EQUAL(type, actual->type);
 	TEST_ASSERT_EQUAL(length, actual->length);
 
 	for(i = 0; i < length; i++)
 	{
-		TEST_ASSERT_EQUAL(value[i], actual->value[i]);
-		printf("actual->value[%d]: %2x\n", i, actual->value[i]);
+        if(value[i] != actual->value[i])
+            sprintf(msg, "Data not the same at index %d", i);
+		UNITY_TEST_ASSERT_EQUAL_INT(value[i], actual->value[i], line, msg);
+		// printf("actual->value[%d]: %2x\n", i, actual->value[i]);
 	}
 }

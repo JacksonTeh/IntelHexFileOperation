@@ -284,7 +284,7 @@ void test_getLSByteAndShiftRight_should_shift_the_address_to_the_right(void)
 
 void test_createProgramMessage_should_create_message_for_the_program(void)
 {
-    int address, dataHigh, dataLow;
+    int address, dataHigh, dataLow, i;
     char buffer1[1024] = ":020000040030F7\n", buffer2[1024] = ":100010004518732745187327451873274518732704\n";
     FILE *hexFile;
     IntelHex16Data *data;
@@ -313,7 +313,7 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
     char value[] = {0x10, 0x00, 0x30, 0x00,                             //address
                     0x45, 0x18, 0x73, 0x27, 0x45, 0x18, 0x73, 0x27,     //data
                     0x45, 0x18, 0x73, 0x27, 0x45, 0x18, 0x73, 0x27,
-                    0x04};                                              //checksum
+                    0xe3};                                              //checksum
 
     TEST_ASSERT_EQUAL_TLV(tlvMessage->type, tlvMessage->length, value, tlvMessage);
 

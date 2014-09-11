@@ -207,13 +207,14 @@ int getLSByteAndShiftRight(int long *address)
  */
 TLV *createProgramMessage(IntelHex16Data *data, int addressHigh)
 {
-    int length, addressLow, j;
+    int length, addressLow, j, i, checksum = 0;
     int long address32bit;
 
-    TLV *tlvMessage = malloc(sizeof(TLV) + sizeof(char) * (addressAndCS + length));
     sscanf(&(data->line[1]), "%2x", &length);
+    length += LEN_OF_ADDR_PLUS_CHKSUM;
+    TLV *tlvMessage = malloc(sizeof(TLV) + sizeof(char) * length);
     tlvMessage->type = PROGRAM_MSG;
-    tlvMessage->length = length + addressAndCS;
+    tlvMessage->length = length;
 
     if(!verifyCheckSumOfIntelHex16Data(data))
         Throw(ERR_WRONG_CHECKSUM);
@@ -226,11 +227,21 @@ TLV *createProgramMessage(IntelHex16Data *data, int addressHigh)
         tlvMessage->value[j] = getLSByteAndShiftRight(&address32bit);
     }
 
-    for(j = 4; j < (length + 5); j++)
+    for(j = 4; j < length; j++)
     {
         tlvMessage->value[j] = getByteFromIntelHex16Data(data, j + 1);
     }
 
+    for(i = 0; i < length - 1; i++)
+    {
+        checksum += tlvMessage->value[i];
+    }
+
+    checksum += tlvMessage->type;
+    checksum = ~checksum;
+    checksum += 1;
+
+    tlvMessage->value[j-1] = checksum;
     tlvMessage->value[j] = 0;
 
     return tlvMessage;

@@ -105,7 +105,7 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_
     TEST_ASSERT_EQUAL(1, result);
     deleteIntelHex16Data(data);
 }
-
+/*
 void test_sendDataCode_should_return_1_if_ACK_is_receive_from_RS232(void)
 {
     char buffer[1024] = ":10000000020E732745187327451873274518732761\n", receiveByte = ACK;
@@ -149,7 +149,7 @@ void test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232(void)
     deleteIntelHex16Data(data);
     deleteTLV(tlvMessage);
 }
-
+*/
 void test_requestStartRunningMode_should_send_the_start_running_message_through_serial_transmit(void)
 {
     TLV *tlvMessage = createStartRunningMessage();
@@ -160,11 +160,3 @@ void test_requestStartRunningMode_should_send_the_start_running_message_through_
 
     deleteTLV(tlvMessage);
 }
-/*
-void test_tlvProtocol(void)
-{
-    int result;
-
-    result = tlvProtocol();
-    TEST_ASSERT_EQUAL(1, result);
-}*/
