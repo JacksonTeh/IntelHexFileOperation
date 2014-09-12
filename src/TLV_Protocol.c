@@ -83,9 +83,9 @@ int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data *data, int 
  *      0       to indicate NACK is receive from the PIC module
  *      1       to indicate the program is able to flash
  */
-int sendDataCode(IntelHex16Data *data, int *address, char receiveByte)
+int sendDataCode(IntelHex16Data *data, int address, char receiveByte)
 {
-    TLV *tlvMessage = createProgrammingMode(&data, address);
+    TLV *tlvMessage = createProgramMessage(data, address);
     deleteIntelHex16Data(data);
 
     sendTLV(tlvMessage);
@@ -100,18 +100,6 @@ int sendDataCode(IntelHex16Data *data, int *address, char receiveByte)
 
     return 1;
 }
-/* int sendDataCode(TLV *tlv, char receiveByte)
-{
-    sendTLV(tlv);
-    Sleep(100);
-
-    RS232_PollComport(COM_PORT, &receiveByte, 1);
-
-    if(receiveByte != ACK)
-        return 0;
-
-    return 1;
-} */
 
 /*
  * To request Start Running Mode from the PIC module

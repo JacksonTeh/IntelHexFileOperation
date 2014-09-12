@@ -320,7 +320,7 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
     deleteIntelHex16Data(data);
     deleteTLV(tlvMessage);
 }
-
+ 
 void test_createProgramMessage_should_raise_an_exception_if_wrong_checksum(void)
 {
     int address, dataHigh, dataLow;

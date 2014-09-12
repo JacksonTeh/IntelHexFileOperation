@@ -207,8 +207,9 @@ int getLSByteAndShiftRight(int long *address)
  */
 TLV *createProgramMessage(IntelHex16Data *data, int addressHigh)
 {
-    int length, addressLow, j, i, checksum = 0;
+    int length, addressLow, j, i;
     int long address32bit;
+    char checksum = 0;
 
     sscanf(&(data->line[1]), "%2x", &length);
     length += LEN_OF_ADDR_PLUS_CHKSUM;
