@@ -6,7 +6,7 @@
 #define COM_PORT                    4
 #define LEN_OF_ADDR_PLUS_CHKSUM     5
 
-typedef enum {ERR_NO_ERROR, ERR_NO_COLON, ERR_WRONG_CHECKSUM} ErrorLine;
+typedef enum {ERR_NO_ERROR, ERR_NO_COLON, ERR_WRONG_CHECKSUM, ERR_WRONG_TYPE} ErrorLine;
 typedef enum {NOTHING, PROGRAM_MSG, START_RUNNING, TARGET_AVAILABLITY, ACK, NACK, PROGRAMMING_MODE} TLV_Message;
 
 typedef struct

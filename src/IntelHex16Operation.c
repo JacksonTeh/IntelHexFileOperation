@@ -157,7 +157,8 @@ int getAddressFromIntelHex16Data(IntelHex16Data *data)
  */
 int verifyCheckSumOfIntelHex16Data(IntelHex16Data *data)
 {
-    int i, result = 0, checkSum = 0;
+    int i, result = 0;
+    char checkSum = 0;
 
     for(i = 1; result != -1; i++)
     {
@@ -166,8 +167,6 @@ int verifyCheckSumOfIntelHex16Data(IntelHex16Data *data)
         if(result != -1)
             checkSum += result;
     }
-
-    checkSum = checkSum & 0x0ff;
 
     if(checkSum == 0)
         return 1;
