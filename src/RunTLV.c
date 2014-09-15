@@ -15,23 +15,23 @@ int tlvProtocol()
 
     if(hexFile == NULL)
     {
-        printf("error: cannot open the file LEDBlink.hex");
+        printf("error: cannot open the file %s\n", IntelHexFile);
         return 0;       // Terminate the program immediately if file unable to open
     }
 
     RS232_OpenComport(COM_PORT, 9600);
 
-    /* receiveByte = NACK;
+    receiveByte = NACK;
      do{
         if(i == 3)
             return 0;   // Terminate the program immediately if the programming mode is unable to set
 
         programmingModeStatus = requestProgrammingMode(receiveByte);
         i++;
-    }while(!programmingModeStatus); */     //repeat request again if the ACK is not receive
+    }while(!programmingModeStatus);     //repeat request again if the ACK is not receive
 
     receiveByte = ACK;
-/*     do{
+    do{
         result = readHexLineAndCreateIntelHex16Data(hexFile, &data, &address);
 
         if(result == 1)
@@ -41,16 +41,9 @@ int tlvProtocol()
             }while(!sendStatus);        //repeat sending the same tlv if the ACK is not receive
             deleteIntelHex16Data(data);
         }
+    }while(result != 0);
 
-    }while(result != 0); */
-
-    result = readHexLineAndCreateIntelHex16Data(hexFile, &data, &address);
-    result = readHexLineAndCreateIntelHex16Data(hexFile, &data, &address);
-    printf("data: %p\n", data);
-    sendStatus = sendDataCode(data, address, receiveByte);
-    deleteIntelHex16Data(data);
-
-/*    requestStartRunningMode();*/
+    requestStartRunningMode();
 
     RS232_CloseComport(COM_PORT);
 

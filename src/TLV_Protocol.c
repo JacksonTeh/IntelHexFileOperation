@@ -86,7 +86,6 @@ int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data **data, int
 int sendDataCode(IntelHex16Data *data, int address, char receiveByte)
 {
     TLV *tlvMessage = createProgramMessage(data, address);
-    printf("&data: %p\n", data);
 
     sendTLV(tlvMessage);
     Sleep(100);

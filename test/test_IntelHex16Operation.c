@@ -227,9 +227,6 @@ void test_verifyCheckSumOfIntelHex16Data_should_return_0_if_got_error(void)
     char buffer[1024] = ":020000040030C9\n";
     IntelHex16Data *data;
 
-    if(buffer[15] == '\n')
-        printf("YES\n");
-
     data = createIntelHex16Data(buffer);
 
     result = verifyCheckSumOfIntelHex16Data(data);

@@ -20,5 +20,5 @@ void test_(void)
 
     result = tlvProtocol();
 
-    TEST_ASSERT_EQUAL(1, result);
+    TEST_ASSERT_EQUAL(0, result);
 }

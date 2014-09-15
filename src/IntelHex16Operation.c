@@ -167,7 +167,7 @@ int verifyCheckSumOfIntelHex16Data(IntelHex16Data *data)
         if(result != -1)
             checkSum += result;
     }
-    printf("checkSum: %x\n", checkSum);
+    // printf("checkSum: %x\n", checkSum);
 
     if(checkSum == 0)
         return 1;
@@ -243,7 +243,6 @@ TLV *createProgramMessage(IntelHex16Data *data, int addressHigh)
     checksum += 1;
 
     tlvMessage->value[j-1] = checksum;
-    tlvMessage->value[j] = 0;
 
     return tlvMessage;
 }
