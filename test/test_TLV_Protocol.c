@@ -2,6 +2,7 @@
 #include "TLV_Protocol.h"
 #include "IntelHex16Operation.h"
 #include "CustomTypeAssertion.h"
+#include "CException.h"
 #include "mock_rs232.h"
 #include <stdio.h>
 
@@ -50,16 +51,13 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_address_if_the_type_i
     FILE *hexFile;
     IntelHex16Data *data;
     int result, address = 0x0000;
+    char *filename = "test/data/Test02.hex";
+    char errMsg[512];
 
-    hexFile = fopen("test/data/Test02.hex", "r");
+    sprintf(errMsg, "error: cannot open the file %s\n", filename);
+    hexFile = TEST_OPEN_FILE(filename, errMsg);
 
-    if(hexFile == NULL)
-    {
-        printf("error: cannot open the file Test.hex");
-        exit(-1);
-    }
-
-    result = readHexLineAndCreateIntelHex16Data(hexFile, data, &address);
+    result = readHexLineAndCreateIntelHex16Data(hexFile, &data, &address);
 
     TEST_ASSERT_EQUAL(0x0030, address);
     TEST_ASSERT_EQUAL(-1, result);
@@ -70,16 +68,13 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_0_if_the_type_in_hex_
     FILE *hexFile;
     IntelHex16Data *data;
     int result, address = 0x0000;
+    char *filename = "test/data/Test03.hex";
+    char errMsg[512];
 
-    hexFile = fopen("test/data/Test03.hex", "r");
+    sprintf(errMsg, "error: cannot open the file %s\n", filename);
+    hexFile = TEST_OPEN_FILE(filename, errMsg);
 
-    if(hexFile == NULL)
-    {
-        printf("error: cannot open the file Test.hex");
-        exit(-1);
-    }
-
-    result = readHexLineAndCreateIntelHex16Data(hexFile, data, &address);
+    result = readHexLineAndCreateIntelHex16Data(hexFile, &data, &address);
 
     TEST_ASSERT_EQUAL(0, address);
     TEST_ASSERT_EQUAL(0, result);
@@ -90,16 +85,13 @@ void test_readHexLineAndCreateIntelHex16Data_should_return_1_if_the_type_in_hex_
     FILE *hexFile;
     IntelHex16Data *data;
     int result, address = 0x0000;
+    char *filename = "test/data/Test04.hex";
+    char errMsg[512];
 
-    hexFile = fopen("test/data/Test04.hex", "r");
+    sprintf(errMsg, "error: cannot open the file %s\n", filename);
+    hexFile = TEST_OPEN_FILE(filename, errMsg);
 
-    if(hexFile == NULL)
-    {
-        printf("error: cannot open the file Test.hex");
-        exit(-1);
-    }
-
-    result = readHexLineAndCreateIntelHex16Data(hexFile, data, &address);
+    result = readHexLineAndCreateIntelHex16Data(hexFile, &data, &address);
 
     TEST_ASSERT_EQUAL(0, address);
     TEST_ASSERT_EQUAL(1, result);
@@ -146,6 +138,66 @@ void test_sendDataCode_should_return_0_if_NACK_is_receive_from_RS232(void)
     result = sendDataCode(data, address, receiveByte);
 
     TEST_ASSERT_EQUAL(0, result);
+    deleteIntelHex16Data(data);
+    deleteTLV(tlvMessage);
+}
+
+void test_sendDataCode_should_raise_an_exception_if_ERR_WRONG_TYPE_is_receive_from_RS232(void)
+{
+    char buffer[1024] = ":10000000020E732745187327451873274518732761\n", receiveByte = ERR_WRONG_TYPE;
+    int address = 0x0030, i, result;
+    IntelHex16Data *data = createIntelHex16Data(buffer);
+    TLV *tlvMessage = createProgramMessage(data, address);
+    CEXCEPTION_T err;
+
+    RS232_SendByte_ExpectAndReturn(COM_PORT, tlvMessage->type, 0);
+    RS232_SendByte_ExpectAndReturn(COM_PORT, tlvMessage->length, 0);
+
+    for(i = 0; i < tlvMessage->length; i++)
+        RS232_SendByte_ExpectAndReturn(COM_PORT, tlvMessage->value[i], 0);
+
+    RS232_PollComport_ExpectAndReturn(COM_PORT, &receiveByte, 1, 1);
+
+    Try
+    {
+        result = sendDataCode(data, address, receiveByte);
+        TEST_FAIL_MESSAGE("Should generate an exception due to wrong type in TLV message.");
+    }Catch(err)
+    {
+        TEST_ASSERT_EQUAL_MESSAGE(ERR_WRONG_TYPE, err, "Expected ERR_WRONG_TYPE exception");
+        printf("Success: Exception generated. Error code: %d.\n", err);
+    }
+
+    deleteIntelHex16Data(data);
+    deleteTLV(tlvMessage);
+}
+
+void test_sendDataCode_should_raise_an_exception_if_ERR_WRONG_CHECKSUM_is_receive_from_RS232(void)
+{
+    char buffer[1024] = ":10000000020E732745187327451873274518732761\n", receiveByte = ERR_WRONG_CHECKSUM;
+    int address = 0x0030, i, result;
+    IntelHex16Data *data = createIntelHex16Data(buffer);
+    TLV *tlvMessage = createProgramMessage(data, address);
+    CEXCEPTION_T err;
+
+    RS232_SendByte_ExpectAndReturn(COM_PORT, tlvMessage->type, 0);
+    RS232_SendByte_ExpectAndReturn(COM_PORT, tlvMessage->length, 0);
+
+    for(i = 0; i < tlvMessage->length; i++)
+        RS232_SendByte_ExpectAndReturn(COM_PORT, tlvMessage->value[i], 0);
+
+    RS232_PollComport_ExpectAndReturn(COM_PORT, &receiveByte, 1, 1);
+
+    Try
+    {
+        result = sendDataCode(data, address, receiveByte);
+        TEST_FAIL_MESSAGE("Should generate an exception due to wrong checksum in TLV message.");
+    }Catch(err)
+    {
+        TEST_ASSERT_EQUAL_MESSAGE(ERR_WRONG_CHECKSUM, err, "Expected ERR_WRONG_CHECKSUM exception");
+        printf("Success: Exception generated. Error code: %d.\n", err);
+    }
+
     deleteIntelHex16Data(data);
     deleteTLV(tlvMessage);
 }

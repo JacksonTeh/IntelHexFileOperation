@@ -2,6 +2,7 @@
 #define CustomTypeAssertion_H
 
 #include "IntelHex16Operation.h"
+#include <stdio.h>
 
 #define TEST_ASSERT_EQUAL_ReadLine(expectedLine, actualLine)	\
 			   assertEqualReadLine(expectedLine,				\
@@ -17,8 +18,11 @@
 							  __LINE__							\
 							  );
 
+#define TEST_OPEN_FILE(filename, errorMsg)             \
+               testOpenFile(filename, errorMsg, __LINE__);
+
 void assertEqualReadLine(char *expectedLine, IntelHex16Data *data, int line);
 void assertEqualTLV(char type, char length, char value[], TLV *actual, int line);
-// void assertEqualsendTLV();
+FILE *testOpenFile(char *filename, char *errorMsg, int line);
 
 #endif // CustomTypeAssertion_H

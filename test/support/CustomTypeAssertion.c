@@ -49,3 +49,16 @@ void assertEqualTLV(char type, char length, char value[], TLV *actual, int line)
 		// printf("actual->value[%d]: %2x\n", i, actual->value[i]);
 	}
 }
+
+FILE *testOpenFile(char *filename, char *errorMsg, int line)
+{
+    FILE *hexFile;
+
+    // Open a file
+    hexFile = fopen(filename, "r");
+
+    if(hexFile == NULL)
+    {
+        TEST_FAIL_MESSAGE(errorMsg);
+    }
+}

@@ -5,7 +5,7 @@
 #define IntelHexFile    "test/data/LEDBlink.hex"
 
 int requestProgrammingMode(char receiveByte);
-int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data *data, int *address);
+int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data **data, int *address);
 int sendDataCode(IntelHex16Data *data, int address, char receiveByte);
 void requestStartRunningMode(void);
 

@@ -167,6 +167,7 @@ int verifyCheckSumOfIntelHex16Data(IntelHex16Data *data)
         if(result != -1)
             checkSum += result;
     }
+    printf("checkSum: %x\n", checkSum);
 
     if(checkSum == 0)
         return 1;

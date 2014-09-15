@@ -44,28 +44,28 @@ int requestProgrammingMode(char receiveByte)
  *      1       to indicate there still some hex line left
  *      -1      to indicate nothing to return
  */
-int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data *data, int *address)
+int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data **data, int *address)
 {
     char buffer[1024], getType;
     int dataHigh, dataLow;
 
     readLine(hexFile, buffer);
 
-    data = createIntelHex16Data(buffer);
+    *data = createIntelHex16Data(buffer);
 
-    getType = getByteFromIntelHex16Data(data, 4);
+    getType = getByteFromIntelHex16Data(*data, 4);
 
     if(getType == 4)
     {
-        dataHigh = getByteFromIntelHex16Data(data, 5);
-        dataLow = getByteFromIntelHex16Data(data, 6);
+        dataHigh = getByteFromIntelHex16Data(*data, 5);
+        dataLow = getByteFromIntelHex16Data(*data, 6);
         *address = (dataHigh << 8) | dataLow;
-        deleteIntelHex16Data(data);
+        deleteIntelHex16Data(*data);
         return -1;
     }
     else if(getType == 1)
     {
-        deleteIntelHex16Data(data);
+        deleteIntelHex16Data(*data);
         return 0;
     }
     else
@@ -86,7 +86,7 @@ int readHexLineAndCreateIntelHex16Data(FILE *hexFile, IntelHex16Data *data, int 
 int sendDataCode(IntelHex16Data *data, int address, char receiveByte)
 {
     TLV *tlvMessage = createProgramMessage(data, address);
-    deleteIntelHex16Data(data);
+    printf("&data: %p\n", data);
 
     sendTLV(tlvMessage);
     Sleep(100);
@@ -94,6 +94,12 @@ int sendDataCode(IntelHex16Data *data, int address, char receiveByte)
     RS232_PollComport(COM_PORT, &receiveByte, 1);
 
     deleteTLV(tlvMessage);
+
+    if(receiveByte == ERR_WRONG_TYPE)
+        Throw(ERR_WRONG_TYPE);
+
+    if(receiveByte == ERR_WRONG_CHECKSUM)
+        Throw(ERR_WRONG_CHECKSUM);
 
     if(receiveByte != ACK)
         return 0;

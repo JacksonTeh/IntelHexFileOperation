@@ -20,16 +20,11 @@ void test_readLine_should_read_first_string_of_line(void)
     char buffer[1024];
     FILE *hexFile;
     IntelHex16Data *data;
+    char *filename = "test/data/Test.hex";
+    char errMsg[512];
 
-    // Open a file
-    hexFile = fopen("test/data/Test.hex", "r");
-
-    // Make sure that the file is successfully opened
-    if(hexFile == NULL)
-    {
-        printf("error: cannot open the file Test.hex");
-        exit(-1);       // Terminate the program immediately
-    }
+    sprintf(errMsg, "error: cannot open the file %s\n", filename);
+    hexFile = TEST_OPEN_FILE(filename, errMsg);
 
     readLine(hexFile, buffer);
 
@@ -50,16 +45,11 @@ void test_readLine_should_read__second_string_of_line(void)
     char buffer[1024];
     FILE *hexFile;
     IntelHex16Data *data;
+    char *filename = "test/data/Test.hex";
+    char errMsg[512];
 
-    // Open a file
-    hexFile = fopen("test/data/Test.hex", "r");
-
-    // Make sure that the file is successfully opened
-    if(hexFile == NULL)
-	{
-        printf("error: cannot open the file Test.hex");
-        exit(-1);       // Terminate the program immediately
-    }
+    sprintf(errMsg, "error: cannot open the file %s\n", filename);
+    hexFile = TEST_OPEN_FILE(filename, errMsg);
 
     readLine(hexFile, buffer);
     readLine(hexFile, buffer);
@@ -79,7 +69,6 @@ void test_readLine_should_read__second_string_of_line(void)
 void test_createIntelHex16Data_should_throw_an_exception_if_first_character_is_not_colon(void)
 {
     char buffer[1024] = "020000040000FA\n";
-    FILE *hexFile;
     IntelHex16Data *data;
     CEXCEPTION_T err;
 
@@ -100,7 +89,6 @@ void test_getByteFromIntelHex16Data_given_index_1_should_get_the_first_byte(void
 {
     int result;
     char buffer[1024] = ":020000040000FA\n";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -118,7 +106,6 @@ void test_getByteFromIntelHex16Data_given_index_4_should_get_the_forth_byte(void
 {
     int result;
     char buffer[1024] = ":020000040000FA\n";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -136,7 +123,6 @@ void test_getByteFromIntelHex16Data_given_index_0_should_return_minus_1(void)
 {
     int result;
     char buffer[1024] = ":020000040000FA\n";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -154,7 +140,6 @@ void test_getByteFromIntelHex16Data_given_index_exceed_the_no_of_byte_of_the_lin
 {
     int result;
     char buffer[1024] = ":020000040000FA\n";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -172,7 +157,6 @@ void test_getLengthFromIntelHex16Data_should_get_length_from_INTEL_HEX_FILE(void
 {
     int result;
     char buffer[1024] = ":10000000020E732745187327451873274518732761\n";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -190,7 +174,6 @@ void test_getTypeFromIntelHex16Data_should_get_type_from_INTEL_HEX_FILE(void)
 {
     int result;
     char buffer[1024]= ":020000040000FA";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -208,7 +191,6 @@ void test_getAddressFromIntelHex16Data_should_get_address_from_INTEL_HEX_FILE(vo
 {
     int result;
     char buffer[1024] = ":100010004518732745187327451873274518732704\n";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -226,7 +208,6 @@ void test_verifyCheckSumOfIntelHex16Data_should_return_1_if_no_error(void)
 {
     int result;
     char buffer[1024] = ":10000000020E732745187327451873274518732761\n";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -243,9 +224,11 @@ void test_verifyCheckSumOfIntelHex16Data_should_return_1_if_no_error(void)
 void test_verifyCheckSumOfIntelHex16Data_should_return_0_if_got_error(void)
 {
     int result;
-    char buffer[1024] = ":020000040000FB\n";
-    FILE *hexFile;
+    char buffer[1024] = ":020000040030C9\n";
     IntelHex16Data *data;
+
+    if(buffer[15] == '\n')
+        printf("YES\n");
 
     data = createIntelHex16Data(buffer);
 
@@ -263,7 +246,6 @@ void test_getLSByteAndShiftRight_should_shift_the_address_to_the_right(void)
     int byte;
     int long result;
     char buffer[1024] = ":100010004518732745187327451873274518732704\n";
-    FILE *hexFile;
     IntelHex16Data *data;
 
     data = createIntelHex16Data(buffer);
@@ -286,7 +268,6 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
 {
     int address, dataHigh, dataLow, i;
     char buffer1[1024] = ":020000040030F7\n", buffer2[1024] = ":100010004518732745187327451873274518732704\n";
-    FILE *hexFile;
     IntelHex16Data *data;
     TLV *tlvMessage;
 
@@ -320,7 +301,7 @@ void test_createProgramMessage_should_create_message_for_the_program(void)
     deleteIntelHex16Data(data);
     deleteTLV(tlvMessage);
 }
- 
+
 void test_createProgramMessage_should_raise_an_exception_if_wrong_checksum(void)
 {
     int address, dataHigh, dataLow;
